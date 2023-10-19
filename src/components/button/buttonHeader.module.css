@@ -1,0 +1,6 @@
+.buttonHeader {
+    width: 100px;
+    height: 60px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}

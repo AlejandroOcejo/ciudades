@@ -1,0 +1,12 @@
+.sectionOptions {
+    display: flex;
+    background-color: blue;
+    align-items: center;
+    justify-content: end;
+}
+
+.closeButton {
+    background-color: red;
+    width: 35px;
+    height: 35px;
+}
