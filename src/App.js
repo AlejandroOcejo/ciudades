@@ -5,10 +5,12 @@ function App() {
   return (
     <div className="App">
       <div className='header'>
-        <div className='logo'></div>
+        <img src="./images/miscalenea/logo.png" alt=''></img>
         <div className='ciudades'></div>
-        <buttonHeader></buttonHeader>
+        <buttonHeader>Buscar</buttonHeader>
+        <buttonHeader>Historial</buttonHeader>
       </div>
+
     </div>
   );
 }
