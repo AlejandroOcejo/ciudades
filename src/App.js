@@ -1,18 +1,19 @@
 import './App.css';
-import buttonHeader from './components/button/buttonHeader';
+import HeaderComponent from './components/header/headerComponent';
+import SearchBar from './components/searchBar/searchBar';
 
 function App() {
-  return (
-    <div className="App">
-      <div className='header'>
-        <img src="./images/miscalenea/logo.png" alt=''></img>
-        <div className='ciudades'></div>
-        <buttonHeader>Buscar</buttonHeader>
-        <buttonHeader>Historial</buttonHeader>
-      </div>
 
+  return (
+
+    <div className="App">
+      <HeaderComponent />
+      <SearchBar> 
+      </SearchBar>
     </div>
+
   );
+
 }
 
 export default App;
