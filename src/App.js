@@ -1,16 +1,19 @@
 import './App.css';
-import buttonHeader from './components/button/buttonHeader';
+import HeaderComponent from './components/header/headerComponent';
+import SearchBar from './components/searchBar/searchBar';
 
 function App() {
+
   return (
+
     <div className="App">
-      <div className='header'>
-        <div className='logo'></div>
-        <div className='ciudades'></div>
-        <buttonHeader></buttonHeader>
-      </div>
+      <HeaderComponent />
+      <SearchBar> 
+      </SearchBar>
     </div>
+
   );
+
 }
 
 export default App;
