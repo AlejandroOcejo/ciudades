@@ -36,14 +36,14 @@ export default function CityWeatherDisplay({ postalCode }) {
             }
         };
 
-        updateChart(weatherData); // Call updateChart when weatherData changes
+        updateChart(weatherData);
 
         return () => {
             if (chartRef.current) {
                 chartRef.current.destroy();
             }
         };
-    }, [weatherData]); // Depend on weatherData
+    }, [weatherData]);
 
     return (
         <div>
