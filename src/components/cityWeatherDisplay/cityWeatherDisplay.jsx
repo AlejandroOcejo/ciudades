@@ -11,7 +11,7 @@ export default function CityWeatherDisplay({ postalCode }) {
         getWeatherInfo(postalCode)
             .then((data) => {
                 setWeatherData(data);
-                setError(null); // Clear any previous errors
+                setError(null);
             })
             .catch((error) => {
                 setWeatherData([]);
