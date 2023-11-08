@@ -4,11 +4,21 @@ import getWeatherInfo from '../../services/getWeatherInfo';
 
 export default function CityWeatherDisplay({ postalCode }) {
     const [weatherData, setWeatherData] = useState([]);
+    const [error, setError] = useState(null);
     const chartRef = useRef(null);
 
     useEffect(() => {
-        getWeatherInfo(postalCode).then((data) => setWeatherData(data));
+        getWeatherInfo(postalCode)
+            .then((data) => {
+                setWeatherData(data);
+                setError(null);
+            })
+            .catch((error) => {
+                setWeatherData([]);
+                setError(error.message);
+            });
     }, [postalCode]);
+
 
     useEffect(() => {
         const updateChart = (data) => {
@@ -36,7 +46,7 @@ export default function CityWeatherDisplay({ postalCode }) {
             }
         };
 
-        updateChart(weatherData); 
+        updateChart(weatherData);
 
         return () => {
             if (chartRef.current) {

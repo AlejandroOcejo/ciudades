@@ -11,15 +11,19 @@ export default function SearchBar(props) {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        setPostalCode(inputValue);
-
         try {
             const cityInfo = await getCityInfo(inputValue);
-            console.log(cityInfo);
+            if (cityInfo !== "Error fetching city info") {
+                setPostalCode(inputValue);
+                return cityInfo
+            } else {
+                console.error("No city info available.");
+            }
         } catch (error) {
-            console.error("Error fetching city info:", error);
+            console.error("Error fetching city info");
         }
     };
+
 
     return (
         <div>

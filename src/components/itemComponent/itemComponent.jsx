@@ -2,17 +2,17 @@ import React, { useState } from 'react';
 import styles from './itemComponent.module.css';
 
 export default function ItemComponent(props) {
-    const [open, setOpen] = useState(true);
+    const [open, setOpen] = useState(false);
     const iconArray = ["x", "□"];
     const [iconDisplay, setIconDisplay] = useState(iconArray[0]);
 
     const onClickHandler = () => {
         setOpen(!open);
-        setIconDisplay(open ? iconArray[1] : iconArray[0]);
+        setIconDisplay(open ? iconArray[0] : iconArray[1]);
     }
 
     const contentStyle = {
-        display: open ? 'block' : 'none',
+        display: open ? 'none' : 'block',
     };
 
     return (

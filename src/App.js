@@ -8,8 +8,7 @@ function App() {
 
     <div className="App">
       <HeaderComponent />
-      <SearchBar> 
-      </SearchBar>
+      <SearchBar/> 
     </div>
 
   );
