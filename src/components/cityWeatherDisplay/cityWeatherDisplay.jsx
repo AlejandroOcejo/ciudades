@@ -55,7 +55,6 @@ export default function CityWeatherDisplay({ postalCode }) {
         };
     }, [weatherData]);
 
-
     return (
         <div>
             <canvas id="weatherChart" width="400" height="200"></canvas>
