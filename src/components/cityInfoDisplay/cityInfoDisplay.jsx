@@ -46,12 +46,15 @@ const abbreviationToImage = {
 };
 
 export default function CityInfoDisplay({ postalCode }) {
-    console.log("CityInfoDisplay re-rendered");
     const [info, setInfo] = useState([]);
 
     useEffect(() => {
-        
-        getCityInfo(postalCode).then(info => setInfo(info));
+        if (getCityInfo(postalCode) === "Error fetching city info") {
+
+        } else {
+            getCityInfo(postalCode).then(info => setInfo(info));
+        }
+
     }, [postalCode]);
     return (
         <div>

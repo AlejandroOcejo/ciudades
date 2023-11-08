@@ -1,0 +1,9 @@
+.infoDiv{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.mapDiv{
+    width: 75px;
+}
