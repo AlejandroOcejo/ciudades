@@ -4,18 +4,15 @@ import getWeatherInfo from '../../services/getWeatherInfo';
 
 export default function CityWeatherDisplay({ postalCode }) {
     const [weatherData, setWeatherData] = useState([]);
-    const [error, setError] = useState(null);
     const chartRef = useRef(null);
 
     useEffect(() => {
         getWeatherInfo(postalCode)
             .then((data) => {
                 setWeatherData(data);
-                setError(null);
             })
             .catch((error) => {
                 setWeatherData([]);
-                setError(error.message);
             });
     }, [postalCode]);
 
