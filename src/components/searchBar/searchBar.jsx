@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, createContext } from 'react';
 import getCityInfo from '../../services/getCityInfo';
 import ItemComponent from '../itemComponent/itemComponent';
 import CityInfoDisplay from '../cityInfoDisplay/cityInfoDisplay';
 import CityWeatherDisplay from '../cityWeatherDisplay/cityWeatherDisplay';
 import CityLocationDisplay from '../cityLocationDisplay/cityLocationDisplay';
+import SearchLog from '../searchLog/searchLog';
+
+export const postalCodeContext = createContext('');
 
 export default function SearchBar(props) {
     const [postalCode, setPostalCode] = useState('');
     const [inputValue, setInputValue] = useState('');
+
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -24,6 +28,7 @@ export default function SearchBar(props) {
         }
     };
 
+    const value = postalCode
 
     return (
         <div>
@@ -40,15 +45,19 @@ export default function SearchBar(props) {
                 <input type="submit" value="Submit" />
             </form>
             {props.children}
-            <ItemComponent postalCode={postalCode}>
-                <CityInfoDisplay postalCode={postalCode} />
-            </ItemComponent>
-            <ItemComponent postalCode={postalCode}>
-                <CityWeatherDisplay postalCode={postalCode} />
-            </ItemComponent>
-            <ItemComponent postalCode={postalCode}>
-                <CityLocationDisplay postalCode={postalCode} />
-            </ItemComponent>
+            <postalCodeContext.Provider value={value}>
+                <ItemComponent >
+                    <CityInfoDisplay />
+                </ItemComponent>
+                <ItemComponent >
+                    <CityWeatherDisplay />
+                </ItemComponent>
+                <ItemComponent >
+                    <CityLocationDisplay />
+                </ItemComponent>
+                <SearchLog />
+            </postalCodeContext.Provider>
+
         </div>
     );
 }

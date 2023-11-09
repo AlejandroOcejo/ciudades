@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import usePostalCode from '../../hooks/usePostalCode';
 import getCityInfo from "../../services/getCityInfo";
 import styles from "./cityLocationDisplay.module.css"
 import mapIcon from "../../public/assets/miscalenea/mapicon.png"
 
 
-export default function CityLocationDisplay({ postalCode }) {
+export default function CityLocationDisplay() {
     const [info, setInfo] = useState([]);
-
+    const postalCode = usePostalCode();
     useEffect(() => {
         if (getCityInfo(postalCode) === "Error fetching city info") {
 

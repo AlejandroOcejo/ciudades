@@ -2,13 +2,13 @@
     display: flex;
     justify-content: space-between;
     align-items: end;
-    padding: 1%;
     background: rgb(25, 25, 25);
     background: linear-gradient(90deg, rgba(25, 25, 25, 1) 0%, rgba(105, 105, 105, 1) 54%, rgba(128, 128, 128, 1) 100%);
 }
 
 .headerLogo {
     width: 150px;
+    padding: 1%;
 }
 
 .buttonDiv {

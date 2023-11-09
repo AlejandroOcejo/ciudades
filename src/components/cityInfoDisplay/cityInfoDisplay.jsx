@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import usePostalCode from '../../hooks/usePostalCode';
 import getCityInfo from "../../services/getCityInfo";
 import styles from "./cityInfoDisplay.module.css"
 import AN from "../../public/assets/flags/AN.gif"
@@ -45,7 +46,8 @@ const abbreviationToImage = {
     VC: VC
 };
 
-export default function CityInfoDisplay({ postalCode }) {
+export default function CityInfoDisplay() {
+    const postalCode = usePostalCode();
     const [info, setInfo] = useState([]);
 
     useEffect(() => {
@@ -54,8 +56,8 @@ export default function CityInfoDisplay({ postalCode }) {
         } else {
             getCityInfo(postalCode).then(info => setInfo(info));
         }
-
     }, [postalCode]);
+
     return (
         <div>
             {info.map(({ state_abbreviation, place_name, state }) => (
