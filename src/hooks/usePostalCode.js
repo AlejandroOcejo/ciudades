@@ -1,11 +1,9 @@
 import { useContext } from 'react';
-import { postalCodeContext } from '../components/searchBar/searchBar';
+import { PostalCodeContext } from '../context/PostalCodeContext';
 
 function usePostalCode() {
-
-    const { postalCode, setPostalCode } = useContext(postalCodeContext);
+    const { postalCode, setPostalCode } = useContext(PostalCodeContext);
     return { postalCode, setPostalCode };
 }
-
 
 export default usePostalCode;
