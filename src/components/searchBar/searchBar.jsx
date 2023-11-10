@@ -8,6 +8,7 @@ import SearchLog from '../searchLog/searchLog';
 
 export const postalCodeContext = createContext('');
 
+
 export default function SearchBar(props) {
     const [postalCode, setPostalCode] = useState('');
     const [inputValue, setInputValue] = useState('');
@@ -28,8 +29,6 @@ export default function SearchBar(props) {
         }
     };
 
-    const value = postalCode
-
     return (
         <div>
             <form onSubmit={handleFormSubmit}>
@@ -45,7 +44,7 @@ export default function SearchBar(props) {
                 <input type="submit" value="Submit" />
             </form>
             {props.children}
-            <postalCodeContext.Provider value={value}>
+            <postalCodeContext.Provider value={{ postalCode, setPostalCode }}>
                 <ItemComponent >
                     <CityInfoDisplay />
                 </ItemComponent>
@@ -57,7 +56,6 @@ export default function SearchBar(props) {
                 </ItemComponent>
                 <SearchLog />
             </postalCodeContext.Provider>
-
         </div>
     );
 }

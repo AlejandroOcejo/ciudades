@@ -6,7 +6,7 @@ import getWeatherInfo from '../../services/getWeatherInfo';
 export default function CityWeatherDisplay() {
     const [weatherData, setWeatherData] = useState([]);
     const chartRef = useRef(null);
-    const postalCode = usePostalCode();
+    const { postalCode } = usePostalCode();
     useEffect(() => {
         getWeatherInfo(postalCode)
             .then((data) => {
@@ -16,7 +16,6 @@ export default function CityWeatherDisplay() {
                 setWeatherData([]);
             });
     }, [postalCode]);
-
 
     useEffect(() => {
         const updateChart = (data) => {
@@ -35,7 +34,7 @@ export default function CityWeatherDisplay() {
                             {
                                 label: 'Temperature',
                                 data: data.map((entry) => entry.temperature),
-                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderColor: 'rgba(36, 169, 255, 0.67)',
                                 fill: false,
                             },
                         ],

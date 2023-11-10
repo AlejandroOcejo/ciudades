@@ -47,7 +47,7 @@ const abbreviationToImage = {
 };
 
 export default function CityInfoDisplay() {
-    const postalCode = usePostalCode();
+    const { postalCode } = usePostalCode();
     const [info, setInfo] = useState([]);
 
     useEffect(() => {

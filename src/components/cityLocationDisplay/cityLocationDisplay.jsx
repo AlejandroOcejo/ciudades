@@ -7,7 +7,7 @@ import mapIcon from "../../public/assets/miscalenea/mapicon.png"
 
 export default function CityLocationDisplay() {
     const [info, setInfo] = useState([]);
-    const postalCode = usePostalCode();
+    const { postalCode } = usePostalCode();
     useEffect(() => {
         if (getCityInfo(postalCode) === "Error fetching city info") {
 

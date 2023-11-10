@@ -7,8 +7,8 @@ function HeaderComponent() {
         <div className={styles.headerComponentDiv}>
             <img className={styles.headerLogo} src={logo} alt="1" />
             <div className={styles.buttonDiv}>
-                <div className={styles.button}>Boton1</div>
-                <div className={styles.button}>Boton2</div>
+                <div className={styles.button}>Buscar</div>
+                <div className={styles.button}>Historial</div>
             </div>
         </div>
     );
