@@ -5,10 +5,18 @@ import ItemComponent from '../itemComponent/itemComponent';
 import CityInfoDisplay from '../cityInfoDisplay/cityInfoDisplay';
 import CityWeatherDisplay from '../cityWeatherDisplay/cityWeatherDisplay';
 import CityLocationDisplay from '../cityLocationDisplay/cityLocationDisplay';
+import { TabContext } from '../../context/TabContext.js';
+import styles from "./searchBar.module.css"
 
 
 export default function SearchBar(props) {
-    const { postalCode, setPostalCode } = useContext(PostalCodeContext);
+    const { setPostalCode } = useContext(PostalCodeContext);
+    const { tab } = useContext(TabContext);
+
+    let inlineStyle = {};
+    if (tab === 'log') {
+        inlineStyle = { display: 'none' }
+    }
 
     const [inputValue, setInputValue] = useState('');
 
@@ -28,7 +36,7 @@ export default function SearchBar(props) {
     };
 
     return (
-        <div>
+        <div style={inlineStyle}>
             <form onSubmit={handleFormSubmit}>
                 <label>
                     Codigo Postal:
