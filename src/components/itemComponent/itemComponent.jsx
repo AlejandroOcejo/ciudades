@@ -4,12 +4,11 @@ import styles from './itemComponent.module.css';
 export default function ItemComponent(props) {
     const [open, setOpen] = useState(false);
     const iconArray = ["x", "□"];
-    const [iconDisplay, setIconDisplay] = useState(iconArray[0]);
 
     const onClickHandler = () => {
         setOpen(!open);
-        setIconDisplay(open ? iconArray[0] : iconArray[1]);
     }
+    const iconDisplay = open ? iconArray[1] : iconArray[0];
 
     const contentStyle = {
         display: open ? 'none' : 'block',

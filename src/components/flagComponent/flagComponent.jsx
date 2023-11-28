@@ -1,7 +1,3 @@
-import React, { useState, useEffect, useContext } from 'react';
-import usePostalCode from '../../hooks/usePostalCode';
-import getCityInfo from "../../services/getCityInfo";
-import styles from "./cityInfoDisplay.module.css"
 import AN from "../../public/assets/flags/AN.gif"
 import AR from "../../public/assets/flags/AR.gif"
 import CE from "../../public/assets/flags/CE.gif"
@@ -21,10 +17,10 @@ import O from "../../public/assets/flags/O.gif"
 import PV from "../../public/assets/flags/PV.gif"
 import S from "../../public/assets/flags/S.gif"
 import VC from "../../public/assets/flags/VC.gif"
-import useFetch from '../../hooks/useFetch';
-import { FetchInfoContext } from '../../context/fetchInfoContext';
-import FlagComponent from '../flagComponent/flagComponent';
- 
+import styles from "../flagComponent/flagComponent.module.css"
+import usePostalCode from "../../hooks/usePostalCode"
+import useFetch from "../../hooks/useFetch"
+
 
 const abbreviationToImage = {
     AN: AN,
@@ -48,24 +44,15 @@ const abbreviationToImage = {
     VC: VC
 };
 
-export default function CityInfoDisplay(props) {
-    const { postalCode } = usePostalCode();
-    /* const { info } = useFetch(postalCode); */
-    useFetch(postalCode)
-    const { infoContext } = useContext(FetchInfoContext);
+export default function FlagComponent(props) {
 
-    return (
-        <div>
-            {Array.isArray(infoContext) && infoContext.map(({ state_abbreviation, place_name, state }) => (
-                <div className={styles.test} key={state_abbreviation}>
-                    <FlagComponent code={state_abbreviation}/>
-                    <div>
-                        <p><b>Ciudad:</b> {place_name}</p>
-                        <p><b>Comunidad:</b> {state}</p>
-                    </div>
-                </div>
-            ))}
-            {props.children}
-        </div>
-    );
+    //const { postalCode } = usePostalCode();
+    /*     const { info } = useFetch(postalCode);
+     */
+
+    
+      return  <img className={styles.flag} src={abbreviationToImage[props.code]} alt={props.code} />
+   
+
+
 }

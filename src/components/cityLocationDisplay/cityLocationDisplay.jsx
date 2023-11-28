@@ -1,24 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import usePostalCode from '../../hooks/usePostalCode';
 import getCityInfo from "../../services/getCityInfo";
 import styles from "./cityLocationDisplay.module.css"
 import mapIcon from "../../public/assets/miscalenea/mapicon.png"
+import useFetch from '../../hooks/useFetch';
+import { FetchInfoContext } from '../../context/fetchInfoContext';
+
 
 
 export default function CityLocationDisplay() {
-    const [info, setInfo] = useState([]);
+
     const { postalCode } = usePostalCode();
-    useEffect(() => {
-        if (getCityInfo(postalCode) === "Error fetching city info") {
+    useFetch(postalCode)
+    const { infoContext } = useContext(FetchInfoContext);
 
-        } else {
-            getCityInfo(postalCode).then(info => setInfo(info));
-        }
-
-    }, [postalCode]);
     return (
         <div>
-            {info.map(({ latitude, longitude }) => (
+            {Array.isArray(infoContext) && infoContext.map(({ latitude, longitude }) => (
                 <div className={styles.infoDiv}>
                     <div>
                         <p><b>Longitud:</b>{longitude} </p>

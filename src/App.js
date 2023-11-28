@@ -4,6 +4,7 @@ import SearchBar from './components/searchBar/searchBar';
 import { PostalCodeProvider } from './context/PostalCodeContext';
 import SearchLog from './components/searchLog/searchLog';
 import { TabProvider } from './context/TabContext';
+import { FetchInfoProvider } from './context/fetchInfoContext';
 
 function App() {
   return (
@@ -11,8 +12,10 @@ function App() {
       <TabProvider>
         <HeaderComponent >
           <PostalCodeProvider>
-            <SearchBar />
-            <SearchLog />
+            <FetchInfoProvider>
+              <SearchBar />
+              <SearchLog />
+            </FetchInfoProvider>
           </PostalCodeProvider>
         </HeaderComponent>
       </TabProvider>

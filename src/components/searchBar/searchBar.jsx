@@ -22,16 +22,11 @@ export default function SearchBar(props) {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        try {
-            const cityInfo = await getCityInfo(inputValue);
-            if (cityInfo !== 'Error fetching city info') {
-                setPostalCode(inputValue);
-                return cityInfo;
-            } else {
-                console.error('No city info available.');
-            }
-        } catch (error) {
-            console.error('Error fetching city info');
+        if (inputValue.length !== 5 || isNaN(Number(inputValue))) {
+            console.log("Not a valid postal code");
+        } else {
+            setPostalCode(inputValue);
+            console.log(inputValue);
         }
     };
 
@@ -41,7 +36,7 @@ export default function SearchBar(props) {
                 <label>
                     Codigo Postal:
                     <input
-                        type="number"
+                        type="text"
                         name="postalCode"
                         value={inputValue}
                         onChange={(e) => setInputValue(e.target.value)}
@@ -49,6 +44,7 @@ export default function SearchBar(props) {
                 </label>
                 <input type="submit" value="Submit" />
             </form>
+
             {props.children}
             <ItemComponent>
                 <CityInfoDisplay />
@@ -62,3 +58,17 @@ export default function SearchBar(props) {
         </div>
     );
 }
+
+
+//try {
+/* const cityInfo = await getCityInfo(inputValue);
+if (cityInfo !== 'Error fetching city info') { */
+// setPostalCode(inputValue);
+//console.log(inputValue);
+//return cityInfo;
+/* } else {
+    console.error('No city info available');
+} */
+/*  } catch (error) {
+     console.error('Error fetching city info');
+ } */
