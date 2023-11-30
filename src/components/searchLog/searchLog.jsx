@@ -1,26 +1,23 @@
 import React, { useState, useEffect, useContext } from 'react'
 import usePostalCode from '../../hooks/usePostalCode'
-import { TabContext } from '../../context/TabContext';
+import { LogContext } from '../../context/LogContext';
 import styles from './searchLog.module.css'
 import getCityInfo from '../../services/getCityInfo';
 import { FetchInfoContext } from '../../context/fetchInfoContext';
+import { Link, useNavigate } from 'react-router-dom';
 
-export default function SearchLog() {
+
+export default function SearchLog(props) {
     const [postalCodeLog, setPostalCodeLog] = useState([]);
     const { postalCode, setPostalCode } = usePostalCode();
-    const { tab, changeTab } = useContext(TabContext);
-    const [cityLog, setcityLog] = useState([])
+    /* const { tab, changeTab } = useContext(TabContext); */
+    /* const [cityLog, setcityLog] = useState([]) */
     const { infoContext } = useContext(FetchInfoContext)
+    const navigate = useNavigate();
 
     const onClickPostalCodeUpdateHandle = (clickedPostalCode) => {
         setPostalCode(clickedPostalCode);
-        changeTab('search')
-    }
-
-    let inlineStyle = {};
-
-    if (tab === 'search') {
-        inlineStyle = { display: 'none' }
+        navigate('/search');
     }
 
     useEffect(() => {
@@ -30,18 +27,20 @@ export default function SearchLog() {
     }, [infoContext]);
 
 
-
     return (
-        <div style={inlineStyle}>
+        <div /* style={inlineStyle} */>
             <ul >
                 {postalCodeLog.map((postalCodeLog) => (
                     <li key={postalCodeLog}>
                         <button onClick={() => onClickPostalCodeUpdateHandle(postalCodeLog)}>
                             {postalCodeLog}
+                            <Link to="/search" />
                         </button>
                     </li>
                 ))}
             </ul>
+            {props.children}
         </div>
+
     );
 }

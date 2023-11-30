@@ -1,25 +1,29 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext } from 'react';
 import styles from './headerComponent.module.css';
 import logo from '../../public/assets/miscalenea/logo.png';
-import { TabContext } from '../../context/TabContext';
+import { Link } from 'react-router-dom';
 
 function HeaderComponent(props) {
-    const { tab, changeTab } = useContext(TabContext);
-    let inlineStyle = {};
 
-
-    const onClickTabHandle = (selectedTab) => {
-        changeTab(selectedTab);
-        inlineStyle = { background: 'red' }
-    };
+    /*     const onClickTabHandle = (selectedTab) => {
+            changeTab(selectedTab);
+        }; */
 
     return (
         <div>
             <div className={styles.headerComponentDiv}>
                 <img className={styles.headerLogo} src={logo} alt="1" />
                 <div className={styles.buttonDiv}>
-                    <div onClick={() => onClickTabHandle('search')} className={styles.button} >Buscar</div>
-                    <div onClick={() => onClickTabHandle('log')} className={styles.button}>Historial</div>
+                    <div className={styles.button}>
+                        <Link to="/search">
+                            Buscar
+                        </Link>
+                    </div>
+                    <div className={styles.button}>
+                        <Link to="/log">
+                            Historial
+                        </Link>
+                    </div>
                 </div>
             </div>
             {props.children}

@@ -5,18 +5,13 @@ import ItemComponent from '../itemComponent/itemComponent';
 import CityInfoDisplay from '../cityInfoDisplay/cityInfoDisplay';
 import CityWeatherDisplay from '../cityWeatherDisplay/cityWeatherDisplay';
 import CityLocationDisplay from '../cityLocationDisplay/cityLocationDisplay';
-import { TabContext } from '../../context/TabContext.js';
 import styles from "./searchBar.module.css"
 
 
 export default function SearchBar(props) {
     const { setPostalCode } = useContext(PostalCodeContext);
-    const { tab } = useContext(TabContext);
 
     let inlineStyle = {};
-    if (tab === 'log') {
-        inlineStyle = { display: 'none' }
-    }
 
     const [inputValue, setInputValue] = useState('');
 
@@ -46,7 +41,7 @@ export default function SearchBar(props) {
             </form>
 
             {props.children}
-            <ItemComponent>
+            {/* <ItemComponent>
                 <CityInfoDisplay />
             </ItemComponent>
             <ItemComponent>
@@ -54,7 +49,7 @@ export default function SearchBar(props) {
             </ItemComponent>
             <ItemComponent>
                 <CityLocationDisplay />
-            </ItemComponent>
+            </ItemComponent> */}
         </div>
     );
 }

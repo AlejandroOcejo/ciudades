@@ -1,6 +1,6 @@
 /*
 - Crear hooks para llamadas a servicios ------
-- Crear componente bandera. //////
+- Crear componente bandera. ------
 - Crear un componente para pestañas
 - Crear un router, crear páginas. Refactorizar, sacar componentes a las páginas.
 - ItemComponente, eliminar estado iconDisplay ------
