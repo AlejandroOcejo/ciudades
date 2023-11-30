@@ -3,20 +3,20 @@ import HeaderComponent from './components/header/headerComponent';
 import SearchBar from './components/searchBar/searchBar';
 import { PostalCodeProvider } from './context/PostalCodeContext';
 import SearchLog from './components/searchLog/searchLog';
-import { LogContext } from './context/LogContext';
+import { LogContextProvider } from './context/LogContext';
 import { FetchInfoProvider } from './context/fetchInfoContext';
 import AppRouter from "./Routers/AppRouter";
 
 function App() {
   return (
     <div className="App">
-      <LogContext>
+      <LogContextProvider>
         <PostalCodeProvider>
           <FetchInfoProvider>
             <AppRouter />
           </FetchInfoProvider>
         </PostalCodeProvider>
-      </LogContext>
+      </LogContextProvider>
     </div >
   );
 }
