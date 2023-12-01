@@ -30,7 +30,6 @@ function useFetch(postalCode) {
         fetchData();
     }, [postalCode, setinfoContext]);
 
-    /* return { info }; */
 }
 
 export default useFetch;

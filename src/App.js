@@ -10,13 +10,13 @@ import AppRouter from "./Routers/AppRouter";
 function App() {
   return (
     <div className="App">
-      <LogContextProvider>
+      <FetchInfoProvider>
         <PostalCodeProvider>
-          <FetchInfoProvider>
+          <LogContextProvider>
             <AppRouter />
-          </FetchInfoProvider>
+          </LogContextProvider>
         </PostalCodeProvider>
-      </LogContextProvider>
+      </FetchInfoProvider>
     </div >
   );
 }
