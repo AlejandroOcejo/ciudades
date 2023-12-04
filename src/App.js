@@ -1,16 +1,29 @@
 import './App.css';
-import buttonHeader from './components/button/buttonHeader';
+import HeaderComponent from './components/header/headerComponent';
+import SearchBar from './components/searchBar/searchBar';
+import { PostalCodeProvider } from './context/PostalCodeContext';
+import SearchLog from './components/searchLog/searchLog';
+import { LogContextProvider } from './context/LogContext';
+import { FetchInfoProvider } from './context/fetchInfoContext';
+import AppRouter from "./Routers/AppRouter";
 
 function App() {
   return (
     <div className="App">
-      <div className='header'>
-        <div className='logo'></div>
-        <div className='ciudades'></div>
-        <buttonHeader></buttonHeader>
-      </div>
-    </div>
+      <FetchInfoProvider>
+        <PostalCodeProvider>
+          <LogContextProvider>
+            <AppRouter />
+          </LogContextProvider>
+        </PostalCodeProvider>
+      </FetchInfoProvider>
+    </div >
   );
 }
 
 export default App;
+
+{/* <SearchBar />
+              <SearchLog /> */}
+
+{/* <HeaderComponent > */ }
