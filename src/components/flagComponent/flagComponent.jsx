@@ -45,14 +45,7 @@ const abbreviationToImage = {
 };
 
 export default function FlagComponent(props) {
-
-    //const { postalCode } = usePostalCode();
-    /*     const { info } = useFetch(postalCode);
-     */
-
     
       return  <img className={styles.flag} src={abbreviationToImage[props.code]} alt={props.code} />
    
-
-
 }

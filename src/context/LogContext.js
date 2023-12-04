@@ -9,14 +9,6 @@ export const LogContext = createContext();
 export const LogContextProvider = ({ children }) => {
 
     const [postalCodeLog, setPostalCodeFromLog] = useState([]);
-    const { postalCode, setPostalCode } = usePostalCode();
-    const { infoContext } = useContext(FetchInfoContext)
-
-    useEffect(() => {
-        if (!postalCodeLog.includes(postalCode) && postalCode !== "" && infoContext !== 'Error fetching city info') {
-            setPostalCode(postalCodeLog.concat(postalCode));
-        }
-    }, [postalCodeLog]);
 
     return (
         <LogContext.Provider value={{ postalCodeLog, setPostalCodeFromLog }}>

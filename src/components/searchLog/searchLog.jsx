@@ -4,13 +4,17 @@ import styles from './searchLog.module.css'
 import getCityInfo from '../../services/getCityInfo';
 import { FetchInfoContext } from '../../context/fetchInfoContext';
 import { Link, useNavigate } from 'react-router-dom';
+import { LogContext } from '../../context/LogContext';
+import useLog from '../../hooks/useLog';
 
 export default function SearchLog(props) {
-    const [postalCodeLog, setPostalCodeLog] = useState([]);
+
     const { postalCode, setPostalCode } = usePostalCode();
+    const { postalCodeLog } = useContext(LogContext)
+    useLog()
     /* const { tab, changeTab } = useContext(TabContext); */
     /* const [cityLog, setcityLog] = useState([]) */
-    const { infoContext } = useContext(FetchInfoContext)
+    /* const { infoContext } = useContext(FetchInfoContext)*/
     const navigate = useNavigate();
 
     const onClickPostalCodeUpdateHandle = (clickedPostalCode) => {
@@ -18,11 +22,7 @@ export default function SearchLog(props) {
         navigate('/search');
     }
 
-   /*  useEffect(() => {
-        if (!postalCodeLog.includes(postalCode) && postalCode !== "" && infoContext !== 'Error fetching city info') {
-            setPostalCodeLog(postalCodeLog.concat(postalCode));
-        }
-    }, [infoContext]); */
+
 
 
     return (
