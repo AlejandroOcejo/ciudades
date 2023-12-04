@@ -6,6 +6,7 @@ import CityInfoDisplay from '../cityInfoDisplay/cityInfoDisplay';
 import CityWeatherDisplay from '../cityWeatherDisplay/cityWeatherDisplay';
 import CityLocationDisplay from '../cityLocationDisplay/cityLocationDisplay';
 import styles from "./searchBar.module.css"
+import useLog from '../../hooks/useLog.js';
 
 
 export default function SearchBar(props) {
@@ -23,8 +24,9 @@ export default function SearchBar(props) {
             setPostalCode(inputValue);
             console.log(inputValue);
         }
-    };
 
+    };
+    useLog()
     return (
         <div style={inlineStyle}>
             <form onSubmit={handleFormSubmit}>
