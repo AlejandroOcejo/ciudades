@@ -24,7 +24,7 @@ import VC from "../../public/assets/flags/VC.gif"
 import useFetch from '../../hooks/useFetch';
 import { FetchInfoContext } from '../../context/fetchInfoContext';
 import FlagComponent from '../flagComponent/flagComponent';
- 
+import useCityInfo from '../../hooks/useCityInfo';
 
 const abbreviationToImage = {
     AN: AN,
@@ -50,6 +50,7 @@ const abbreviationToImage = {
 
 export default function CityInfoDisplay(props) {
     const { postalCode } = usePostalCode();
+    
     /* const { info } = useFetch(postalCode); */
     useFetch(postalCode)
     const { infoContext } = useContext(FetchInfoContext);

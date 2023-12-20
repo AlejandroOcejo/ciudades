@@ -18,6 +18,20 @@
 }
 
 .button {
+    background-color: rgba(128, 128, 128, 1);
+    border: 1px solid black;
+    height: 50px;
+    width: 85px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top-right-radius: 15px;
+    border-top-left-radius: 15px;
+}
+
+.activeButton {
+    border: 1px solid black;
+    border-bottom: 0px;
     background-color: white;
     height: 50px;
     width: 85px;
