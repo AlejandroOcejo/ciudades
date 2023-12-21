@@ -11,14 +11,12 @@ export default function useWeatherInfo() {
     const { infoContext, setinfoContext } = useContext(FetchInfoContext);
     const { postalCode } = useContext(PostalCodeContext)
     console.log(infoContext);
+
     useEffect(() => {
-        if (
-            infoContext.length > 0
-        ) {
+        if (infoContext.length > 0) {
             fetchData.call(`https://api.open-meteo.com/v1/forecast?latitude=${infoContext[0]["latitude"]}&longitude=${infoContext[0]["longitude"]}&hourly=temperature`);
         }
-    }, [postalCode]);
-
+    }, [infoContext]);
 
 
     useEffect(() => {
@@ -37,6 +35,7 @@ export default function useWeatherInfo() {
             }
         }
     }, [fetchData.data]);
+    
 
 
     //const infoContext  = useMemo();
