@@ -2,11 +2,15 @@ import React, { useEffect, useMemo, useContext } from 'react'
 import useFetch from './useFetch'
 import usePostalCode from './usePostalCode';
 import { FetchInfoContext } from '../context/fetchInfoContext';
+import { LogContext } from "../context/LogContext";
+
 
 export default function useCityInfo() {
-    const { postalCode } = usePostalCode();
+    const { postalCode, setPostalCode } = usePostalCode();
     const fetchData = useFetch();
     const { infoContext, setinfoContext } = useContext(FetchInfoContext);
+    const { postalCodeLog, setPostalCodeFromLog } = useContext(LogContext)
+
 
 
     useEffect(() => {
@@ -18,7 +22,8 @@ export default function useCityInfo() {
     useEffect(() => {
         console.log("useEffect", fetchData.data);
         if (fetchData.data) {
-            const newInfo = fetchData.data.places.map((result) => ({
+            const { places = [] } = fetchData.data;
+            const newInfo = places.map((result) => ({
                 "place_name": result["place name"],
                 "state_abbreviation": result["state abbreviation"],
                 "longitude": result.longitude,
@@ -26,6 +31,9 @@ export default function useCityInfo() {
                 "latitude": result.latitude
             }));
             setinfoContext(newInfo);
+            if (!postalCodeLog.includes(postalCode)) {
+                setPostalCodeFromLog(postalCodeLog.concat(postalCode))
+            }
             console.log(newInfo);
         } else {
             setinfoContext([]);

@@ -5,13 +5,12 @@ import getCityInfo from '../../services/getCityInfo';
 import { FetchInfoContext } from '../../context/fetchInfoContext';
 import { Link, useNavigate } from 'react-router-dom';
 import { LogContext } from '../../context/LogContext';
-import useLog from '../../hooks/useLog';
 
 export default function SearchLog(props) {
 
     const { postalCode, setPostalCode } = usePostalCode();
     const { postalCodeLog } = useContext(LogContext)
-    useLog()
+    /* useLog() */
     /* const { tab, changeTab } = useContext(TabContext); */
     /* const [cityLog, setcityLog] = useState([]) */
     /* const { infoContext } = useContext(FetchInfoContext)*/

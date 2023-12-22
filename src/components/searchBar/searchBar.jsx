@@ -6,7 +6,6 @@ import CityInfoDisplay from '../cityInfoDisplay/cityInfoDisplay';
 import CityWeatherDisplay from '../cityWeatherDisplay/cityWeatherDisplay';
 import CityLocationDisplay from '../cityLocationDisplay/cityLocationDisplay';
 import styles from "./searchBar.module.css"
-import useLog from '../../hooks/useLog.js';
 import ErrorComponent from '../errorComponent/errorComponent.jsx';
 import useCityInfo from '../../hooks/useCityInfo.js'
 import useWeatherInfo from '../../hooks/useWeatherInfo.js';
@@ -39,7 +38,7 @@ export default function SearchBar(props) {
 
 
 
-    useLog()
+    /* useLog() */
     return (
         <div style={inlineStyle}>
             <form onSubmit={handleFormSubmit}>
