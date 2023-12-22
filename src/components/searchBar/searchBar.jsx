@@ -1,11 +1,5 @@
 import React, { useState, useContext } from 'react';
 import { PostalCodeContext } from '../../context/PostalCodeContext.js';
-import getCityInfo from '../../services/getCityInfo';
-import ItemComponent from '../itemComponent/itemComponent';
-import CityInfoDisplay from '../cityInfoDisplay/cityInfoDisplay';
-import CityWeatherDisplay from '../cityWeatherDisplay/cityWeatherDisplay';
-import CityLocationDisplay from '../cityLocationDisplay/cityLocationDisplay';
-import styles from "./searchBar.module.css"
 import ErrorComponent from '../errorComponent/errorComponent.jsx';
 import useCityInfo from '../../hooks/useCityInfo.js'
 import useWeatherInfo from '../../hooks/useWeatherInfo.js';

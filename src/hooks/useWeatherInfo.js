@@ -1,15 +1,12 @@
-import React, { useEffect, useMemo, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import useFetch from './useFetch'
-import usePostalCode from './usePostalCode';
 import { FetchInfoContext } from '../context/fetchInfoContext';
 import { WeatherInfoContext } from '../context/WeatherInfoContext';
-import { PostalCodeContext } from '../context/PostalCodeContext';
 
 export default function useWeatherInfo() {
     const fetchData = useFetch();
-    const { weatherInfoContext, setweatherInfoContext } = useContext(WeatherInfoContext);
-    const { infoContext, setinfoContext } = useContext(FetchInfoContext);
-    const { postalCode } = useContext(PostalCodeContext)
+    const { setweatherInfoContext } = useContext(WeatherInfoContext);
+    const { infoContext } = useContext(FetchInfoContext);
     console.log(infoContext);
 
     useEffect(() => {
@@ -35,7 +32,7 @@ export default function useWeatherInfo() {
             }
         }
     }, [fetchData.data]);
-    
+
 
 
     //const infoContext  = useMemo();

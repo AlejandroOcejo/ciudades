@@ -7,11 +7,9 @@
 - Validaciones antes de la llamada al servicio.  ------
 */
 
-import { useState, useContext } from "react";
-import { FetchInfoContext } from "../context/fetchInfoContext";
+import { useState } from "react";
 
 function useFetch() {
-    const { setinfoContext } = useContext(FetchInfoContext);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState(null);
     const [data, setData] = useState(null);

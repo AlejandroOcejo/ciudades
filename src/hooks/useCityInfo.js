@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useContext } from 'react'
+import React, { useEffect, useContext } from 'react'
 import useFetch from './useFetch'
 import usePostalCode from './usePostalCode';
 import { FetchInfoContext } from '../context/fetchInfoContext';
@@ -6,12 +6,10 @@ import { LogContext } from "../context/LogContext";
 
 
 export default function useCityInfo() {
-    const { postalCode, setPostalCode } = usePostalCode();
+    const { postalCode } = usePostalCode();
     const fetchData = useFetch();
     const { infoContext, setinfoContext } = useContext(FetchInfoContext);
     const { postalCodeLog, setPostalCodeFromLog } = useContext(LogContext)
-
-
 
     useEffect(() => {
         if (postalCode) {

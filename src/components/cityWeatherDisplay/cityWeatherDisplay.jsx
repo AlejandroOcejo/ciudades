@@ -1,14 +1,10 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import Chart from 'chart.js/auto';
-import usePostalCode from '../../hooks/usePostalCode';
-import getWeatherInfo from '../../services/getWeatherInfo';
-import useWeatherInfo from '../../hooks/useWeatherInfo';
 import { WeatherInfoContext } from '../../context/WeatherInfoContext';
 
 export default function CityWeatherDisplay() {
     const [weatherData, setWeatherData] = useState([]);
     const chartRef = useRef(null);
-    const { postalCode } = usePostalCode();
     const { weatherInfoContext } = useContext(WeatherInfoContext);
 
 
