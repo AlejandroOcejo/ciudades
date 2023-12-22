@@ -6,16 +6,19 @@ import SearchLog from './components/searchLog/searchLog';
 import { LogContextProvider } from './context/LogContext';
 import { FetchInfoProvider } from './context/fetchInfoContext';
 import AppRouter from "./Routers/AppRouter";
+import { WeatherInfoProvider } from './context/WeatherInfoContext';
 
 function App() {
   return (
     <div className="App">
       <FetchInfoProvider>
-        <PostalCodeProvider>
-          <LogContextProvider>
-            <AppRouter />
-          </LogContextProvider>
-        </PostalCodeProvider>
+        <WeatherInfoProvider>
+          <PostalCodeProvider>
+            <LogContextProvider>
+              <AppRouter />
+            </LogContextProvider>
+          </PostalCodeProvider>
+        </WeatherInfoProvider>
       </FetchInfoProvider>
     </div >
   );
