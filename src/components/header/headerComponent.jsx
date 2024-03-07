@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 function HeaderComponent(props) {
 
     const location = useLocation();
-    const isSearchPage = location.pathname.endsWith("/search");
+    const isSearchPage = location.pathname.endsWith("/");
 
 
     return (
@@ -15,7 +15,7 @@ function HeaderComponent(props) {
                 <img className={styles.headerLogo} src={logo} alt="1" />
                 <div className={styles.buttonDiv}>
                     <div className={isSearchPage ? styles.activeButton : styles.button}>
-                        <Link to="/search">
+                        <Link to="/">
                             Buscar
                         </Link>
                     </div>

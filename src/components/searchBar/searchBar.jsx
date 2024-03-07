@@ -1,41 +1,40 @@
 import React, { useState, useContext } from 'react';
-import { PostalCodeContext } from '../../context/PostalCodeContext.js';
+import { usePostalCodeContext } from '../../context/PostalCodeContext.js';
 import ErrorComponent from '../errorComponent/errorComponent.jsx';
 import useCityInfo from '../../hooks/useCityInfo.js'
 import useWeatherInfo from '../../hooks/useWeatherInfo.js';
 
+export function handleFormSubmit(inputValue, setPostalCode, setActive) {
+    if (inputValue.length !== 5 || isNaN(Number(inputValue))) {
+        setActive(true);
+    } else {
+        setPostalCode(inputValue);
+        setActive(false);
+        console.log(inputValue);
+    }
+}
+
 export default function SearchBar(props) {
-    const { setPostalCode } = useContext(PostalCodeContext);
+    const { setPostalCode } = usePostalCodeContext();
     const [active, setActive] = useState(false);
     let inlineStyle = {};
-    useCityInfo()
-    useWeatherInfo()
-    
+    useCityInfo();
+    useWeatherInfo();
+
     const [inputValue, setInputValue] = useState('');
 
-    const handleFormSubmit = async (event) => {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        if (inputValue.length !== 5 || isNaN(Number(inputValue))) {
-            setActive(true)
-
-        } else {
-            setPostalCode(inputValue);
-            setActive(false)
-            console.log(inputValue);
-        }
-
-
+        handleFormSubmit(inputValue, setPostalCode, setActive);
     };
+
     const errorStyle = {
         display: active ? 'none' : 'block',
     };
 
-
-
-    /* useLog() */
     return (
         <div style={inlineStyle}>
-            <form onSubmit={handleFormSubmit}>
+            <form data-testid="search-form" onSubmit={handleSubmit}>
                 <label>
                     Codigo Postal:
                     <input
@@ -53,16 +52,3 @@ export default function SearchBar(props) {
     );
 }
 
-
-//try {
-/* const cityInfo = await getCityInfo(inputValue);
-if (cityInfo !== 'Error fetching city info') { */
-// setPostalCode(inputValue);
-//console.log(inputValue);
-//return cityInfo;
-/* } else {
-    console.error('No city info available');
-} */
-/*  } catch (error) {
-     console.error('Error fetching city info');
- } */

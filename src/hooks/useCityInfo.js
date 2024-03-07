@@ -1,15 +1,15 @@
-import React, { useEffect, useContext } from 'react'
+import React, { useEffect, useContext, useMemo } from 'react'
 import useFetch from './useFetch'
 import usePostalCode from './usePostalCode';
-import { FetchInfoContext } from '../context/fetchInfoContext';
-import { LogContext } from "../context/LogContext";
+import { useFetchInfoContext } from '../context/fetchInfoContext';
+import { useLogContext } from "../context/LogContext";
 
 
 export default function useCityInfo() {
     const { postalCode } = usePostalCode();
     const fetchData = useFetch();
-    const { infoContext, setinfoContext } = useContext(FetchInfoContext);
-    const { postalCodeLog, setPostalCodeFromLog } = useContext(LogContext)
+    const { infoContext, setinfoContext } = useFetchInfoContext();
+    const { postalCodeLog, setPostalCodeFromLog } = useLogContext()
 
     useEffect(() => {
         if (postalCode) {
@@ -33,8 +33,6 @@ export default function useCityInfo() {
                 setPostalCodeFromLog(postalCodeLog.concat(postalCode))
             }
             console.log(newInfo);
-        } else {
-            setinfoContext([]);
         }
     }, [fetchData.data]);
 
