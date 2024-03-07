@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
-export const PostalCodeContext = createContext();
+const PostalCodeContext = createContext();
 
 export const PostalCodeProvider = ({ children }) => {
     const [postalCode, setPostalCode] = useState('');
@@ -11,3 +11,8 @@ export const PostalCodeProvider = ({ children }) => {
         </PostalCodeContext.Provider>
     );
 };
+
+export const usePostalCodeContext = () => {
+    const context = useContext(PostalCodeContext);
+    return context;
+}

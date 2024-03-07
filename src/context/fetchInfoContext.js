@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-export const FetchInfoContext = createContext();
+const FetchInfoContext = createContext();
 
 export const FetchInfoProvider = ({ children }) => {
     const [infoContext, setinfoContext] = useState([]);
@@ -11,3 +11,10 @@ export const FetchInfoProvider = ({ children }) => {
         </FetchInfoContext.Provider>
     );
 };
+
+export const useFetchInfoContext = () => {
+    const context = useContext(FetchInfoContext);
+    return context;
+}
+
+/* export default useFetchInfoContext */

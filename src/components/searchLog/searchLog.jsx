@@ -1,22 +1,18 @@
 import React, { useContext } from 'react'
 import usePostalCode from '../../hooks/usePostalCode'
 import { Link, useNavigate } from 'react-router-dom';
-import { LogContext } from '../../context/LogContext';
+import { LogContext, useLogContext } from '../../context/LogContext';
 
 export default function SearchLog(props) {
 
     const { setPostalCode } = usePostalCode();
-    const { postalCodeLog } = useContext(LogContext)
+    const { postalCodeLog } = useLogContext();
     const navigate = useNavigate();
 
     const onClickPostalCodeUpdateHandle = (clickedPostalCode) => {
         setPostalCode(clickedPostalCode);
-        navigate('/search');
+        navigate('/');
     }
-
-
-
-
     return (
         <div /* style={inlineStyle} */>
             <ul >
@@ -24,13 +20,14 @@ export default function SearchLog(props) {
                     <li key={postalCodeLog}>
                         <button onClick={() => onClickPostalCodeUpdateHandle(postalCodeLog)}>
                             {postalCodeLog}
-                            <Link to="/search" />
+                            <Link to="/" />
                         </button>
                     </li>
                 ))}
             </ul>
             {props.children}
-        </div>
 
+        </div>
     );
 }
+

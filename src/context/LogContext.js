@@ -1,10 +1,9 @@
 import React, { createContext, useEffect, useContext, useState } from 'react';
-import { FetchInfoContext } from './fetchInfoContext';
 import { PostalCodeContext } from './PostalCodeContext';
 import usePostalCode from '../hooks/usePostalCode'
 
 
-export const LogContext = createContext();
+const LogContext = createContext();
 
 export const LogContextProvider = ({ children }) => {
 
@@ -16,3 +15,8 @@ export const LogContextProvider = ({ children }) => {
         </LogContext.Provider>
     );
 };
+
+export const useLogContext = () => {
+    const context = useContext(LogContext);
+    return context;
+}

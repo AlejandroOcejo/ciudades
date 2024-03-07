@@ -22,7 +22,7 @@ import PV from "../../public/assets/flags/PV.gif"
 import S from "../../public/assets/flags/S.gif"
 import VC from "../../public/assets/flags/VC.gif"
 import useFetch from '../../hooks/useFetch';
-import { FetchInfoContext } from '../../context/fetchInfoContext';
+import { useFetchInfoContext } from '../../context/fetchInfoContext';
 import FlagComponent from '../flagComponent/flagComponent';
 import useCityInfo from '../../hooks/useCityInfo';
 
@@ -50,16 +50,18 @@ const abbreviationToImage = {
 
 export default function CityInfoDisplay(props) {
     const { postalCode } = usePostalCode();
-    
+
     /* const { info } = useFetch(postalCode); */
     useFetch(postalCode)
-    const { infoContext } = useContext(FetchInfoContext);
+
+    const { infoContext } = useFetchInfoContext()
+
 
     return (
         <div>
             {Array.isArray(infoContext) && infoContext.map(({ state_abbreviation, place_name, state }) => (
                 <div className={styles.test} key={state_abbreviation}>
-                    <FlagComponent code={state_abbreviation}/>
+                    <FlagComponent code={state_abbreviation} />
                     <div>
                         <p><b>Ciudad:</b> {place_name}</p>
                         <p><b>Comunidad:</b> {state}</p>

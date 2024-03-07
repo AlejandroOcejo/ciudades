@@ -1,12 +1,11 @@
 import React, { useEffect, useState, useRef, useContext } from 'react';
 import Chart from 'chart.js/auto';
-import { WeatherInfoContext } from '../../context/WeatherInfoContext';
+import { WeatherInfoContext, useWeatherInfoContext } from '../../context/WeatherInfoContext';
 
 export default function CityWeatherDisplay() {
     const [weatherData, setWeatherData] = useState([]);
     const chartRef = useRef(null);
-    const { weatherInfoContext } = useContext(WeatherInfoContext);
-
+    const { weatherInfoContext } = useWeatherInfoContext()
 
     useEffect(() => {
         try {

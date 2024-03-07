@@ -1,6 +1,6 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useContext, useState } from 'react';
 
-export const WeatherInfoContext = createContext();
+const WeatherInfoContext = createContext();
 
 export const WeatherInfoProvider = ({ children }) => {
     const [weatherInfoContext, setweatherInfoContext] = useState([]);
@@ -11,3 +11,8 @@ export const WeatherInfoProvider = ({ children }) => {
         </WeatherInfoContext.Provider>
     );
 };
+
+export const useWeatherInfoContext = () => {
+    const context = useContext(WeatherInfoContext);
+    return context;
+}

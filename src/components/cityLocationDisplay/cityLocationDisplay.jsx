@@ -1,13 +1,13 @@
 import React, {useContext } from 'react';
 import styles from "./cityLocationDisplay.module.css"
 import mapIcon from "../../public/assets/miscalenea/mapicon.png"
-import { FetchInfoContext } from '../../context/fetchInfoContext';
+import { useFetchInfoContext } from '../../context/fetchInfoContext';
 
 
 
 export default function CityLocationDisplay() {
     
-    const { infoContext } = useContext(FetchInfoContext);
+    const { infoContext } = useFetchInfoContext()
 
     return (
         <div>
